@@ -8,7 +8,8 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 router.post("/generate", authMiddleware, async (req, res) => {
   try {
-    const { prompt, mode } = req.body;
+
+    const { prompt, mode, targetLanguage } = req.body;
 
     if (!prompt) {
       return res.status(400).json({ message: "Prompt is required" });
@@ -20,7 +21,9 @@ router.post("/generate", authMiddleware, async (req, res) => {
 
     let finalPrompt = "";
 
+    // CODE DEBUGGING
     if (mode === "debug") {
+
       finalPrompt = `
 You are an expert software developer.
 
@@ -33,12 +36,37 @@ TASK:
 CODE:
 ${prompt}
 `;
-    } else {
+
+    }
+
+    // CODE CONVERTER ⭐
+    else if (mode === "convert") {
+
+      finalPrompt = `
+You are a professional software engineer.
+
+Convert the following code into ${targetLanguage}.
+
+Rules:
+1. Maintain the same logic.
+2. Write clean and correct code.
+3. Only return the converted code.
+
+CODE:
+${prompt}
+`;
+
+    }
+
+    // CODE GENERATION
+    else {
+
       finalPrompt = `
 Generate clean, correct, and well-structured code for the following request:
 
 ${prompt}
 `;
+
     }
 
     const result = await model.generateContent(finalPrompt);
@@ -47,8 +75,10 @@ ${prompt}
     res.json({ output: response });
 
   } catch (error) {
+
     console.error("AI ERROR:", error.message);
     res.status(500).json({ message: "AI generation failed" });
+
   }
 });
 

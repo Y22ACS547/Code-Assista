@@ -57,7 +57,7 @@
 }
 
 .signup-card input:focus {
-  border-color: #6a85ff;
+  border-color: #f17c0f;
   box-shadow: 0 0 0 3px rgba(106, 133, 255, 0.15);
 }
 
@@ -67,7 +67,7 @@
   padding: 13px;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, #6a85ff, #5f9cff);
+  background: linear-gradient(135deg, #f17c0f, #f17c0f);
   color: white;
   font-size: 16px;
   font-weight: 600;

@@ -27,6 +27,41 @@
   letter-spacing: 1px;
 }
 
+/* MODE SWITCH BUTTONS */
+.mode-switch {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+/* Active button */
+.active-btn {
+  background: #f17c0f;
+  background: linear-gradient(135deg, #f17c0f, #f17c0f);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Inactive button */
+.inactive-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.inactive-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
 /* Textarea */
 .assistant-card textarea {
   width: 100%;
@@ -40,14 +75,23 @@
   margin-bottom: 15px;
 }
 
-/* Button */
+/* Language dropdown */
+.language-select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* Generate / Debug / Convert Button */
 .generate-btn {
   width: 100%;
   padding: 12px;
   border: none;
   border-radius: 25px;
-  background: #00c6ff;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  background: linear-gradient(135deg, #f17c0f, #f17c0f);
   color: white;
   font-size: 16px;
   cursor: pointer;
